@@ -2,8 +2,8 @@
 //!
 //! Nachbau von `regenkarte.py serve` in Rust. Die Oberflaeche bleibt, wie
 //! sie ist (PySide/QML); hier wird nur das ausgetauscht, was den ganzen
-//! Tag im Speicher liegt: der Python-Dienst belegte 10,3 MB, dieser rund
-//! 1 MB.
+//! Tag im Speicher liegt: der Python-Dienst belegte 10,3 MB, dieser 0,5
+//! MB im Leerlauf und 2,9 MB mit geladener Staedteliste.
 //!
 //!     kartendienst serve [port]     Dienst auf 127.0.0.1:8642
 //!     kartendienst probe            laeuft schon einer? (fuer start.sh)

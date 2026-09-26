@@ -253,9 +253,21 @@ pub fn abschnitt_rendern(abschnitt: i64) -> Result<(), String> {
     ];
     let mut daten: Option<Value> = None;
     for (anfang, mit_temp, mit_wind) in versuche {
-        if let Ok(v) = netz::holen_json(&gs_url(anfang, abschnitt + CHUNK, mit_temp, mit_wind)) {
-            daten = Some(v);
-            break;
+        match netz::holen_json(&gs_url(anfang, abschnitt + CHUNK, mit_temp, mit_wind)) {
+            Ok(v) => {
+                // Welcher Versuch durchkam, gehoert ins Protokoll: faellt
+                // ein Parameter bei GeoSphere aus, fehlen hinterher
+                // stillschweigend die Stationswerte, und man sucht lange.
+                eprintln!(
+                    "geosphere: Abschnitt {} geholt (Temperatur {}, Wind {})",
+                    abschnitt,
+                    if mit_temp { "ja" } else { "nein" },
+                    if mit_wind { "ja" } else { "nein" }
+                );
+                daten = Some(v);
+                break;
+            }
+            Err(e) => eprintln!("geosphere: {}", e),
         }
     }
     let Some(daten) = daten else {
@@ -403,6 +415,13 @@ pub fn abschnitt_rendern(abschnitt: i64) -> Result<(), String> {
             }
             // Leeres nicht speichern -- sonst gilt der Fehlschlag als
             // Ergebnis und wird nie wiederholt.
+            if temps.is_empty() {
+                eprintln!(
+                    "temps {}: nichts gefunden ({} Stationen im Gitter)",
+                    zeit::beschriftung(tsec),
+                    stations_index.len()
+                );
+            }
             if !temps.is_empty() {
                 let inhalt = json!({ "temps": temps, "wind": wind });
                 if let Err(e) = std::fs::write(temps_pfad(tsec), inhalt.to_string()) {

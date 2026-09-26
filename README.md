@@ -30,7 +30,9 @@ verschiebt, muss beide Seiten anfassen:
 
 Er lag den ganzen Tag im Speicher und belegte dabei **10,3 MB** — auf
 einem Gerät mit 1 GB, auf dem der Kern sonst den Seitencache wegwirft,
-ist das spürbar. Die Rust-Fassung belegt rund 1 MB.
+ist das spürbar. Die Rust-Fassung belegt **0,5 MB** im Leerlauf und
+**2,9 MB**, sobald die Städteliste geladen ist (32 401 Orte; die ist
+der Grund, dass es nicht weniger wird).
 
 Nebenbei fällt eine Abhängigkeit weg: gebraucht wurde das
 nachinstallierte `/opt/wunderw/bin/python3.11` nur, weil Harmattans

@@ -11,7 +11,8 @@ Description: Regenradar-Karte mit Prognose
  Lokaler Kachel-Proxy mit dauerhaftem Zwischenspeicher der Grundkarte.
  .
  Seit 2.0 ist der Dienst dahinter in Rust statt in Python: 10,3 MB
- belegter Arbeitsspeicher werden zu rund 1 MB, und das nachinstallierte
+ belegter Arbeitsspeicher werden zu 0,5 MB im Leerlauf und 2,9 MB mit
+ geladener Staedteliste, und das nachinstallierte
  Python 3.11 aus /opt/wunderw wird nicht mehr gebraucht -- gebraucht
  wurde es nur wegen TLS 1.2.
 XB-Maemo-Icon-26:
