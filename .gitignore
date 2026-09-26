@@ -1,0 +1,4 @@
+build/
+dienst/build/
+dienst/target/
+*.deb

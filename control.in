@@ -1,0 +1,18 @@
+Package: regenkarte
+Version: @VERSION@
+Section: user/utilities
+Priority: optional
+Architecture: armel
+Maintainer: Sebastian <sebastian@localhost>
+Description: Regenradar-Karte mit Prognose
+ Weltweite Pan/Zoom-Regenkarte: RainViewer-Radar (10-min-Schritte)
+ plus AROME-Niederschlagsprognose von Geosphere Austria (1h, +48h).
+ Temperatur und Wind (m/s mit Richtung) lassen sich einblenden.
+ Lokaler Kachel-Proxy mit dauerhaftem Zwischenspeicher der Grundkarte.
+ .
+ Seit 2.0 ist der Dienst dahinter in Rust statt in Python: 10,3 MB
+ belegter Arbeitsspeicher werden zu rund 1 MB, und das nachinstallierte
+ Python 3.11 aus /opt/wunderw wird nicht mehr gebraucht -- gebraucht
+ wurde es nur wegen TLS 1.2.
+XB-Maemo-Icon-26:
+@ICON@

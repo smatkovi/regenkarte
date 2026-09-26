@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Version=1.0
+Name=Regenkarte
+Comment=Regenradar + AROME-Prognose
+Icon=/usr/share/icons/hicolor/80x80/apps/regenkarte.png
+Exec=/bin/sh /opt/regenkarte/start.sh
+Terminal=false
+Categories=Utility;

@@ -1,0 +1,6 @@
+# Ohne diese zwei Zeilen nimmt cargo den x86-Linker des Rechners und bricht
+# mit "relocations in generic ELF (EM: 40)" ab. rust-lld kommt mit der
+# Toolchain mit, ein eigener Cross-Binutils-Satz ist nicht noetig.
+[target.armv7-unknown-linux-musleabi]
+linker = "rust-lld"
+rustflags = ["-C", "linker-flavor=ld.lld", "-C", "link-self-contained=yes"]

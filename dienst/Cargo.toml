@@ -1,0 +1,23 @@
+[package]
+name = "kartendienst"
+version = "2.0.0"
+edition = "2021"
+description = "Kachel- und Prognosedienst der Regenkarte fuer N9/N950"
+license = "GPL-3.0-or-later"
+
+[[bin]]
+name = "kartendienst"
+path = "src/main.rs"
+
+[dependencies]
+libc = "0.2"
+serde_json = "1"
+flate2 = "1"
+crc32fast = "1"
+ureq = "2"
+
+[profile.release]
+opt-level = "z"
+lto = true
+codegen-units = 1
+strip = true
